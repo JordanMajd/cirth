@@ -36,12 +36,17 @@
 
   var runeInput = document.getElementById('rune-input');
   var runeContainer = document.getElementById('rune-container');
+  var diamonds = document.getElementById('diamonds');
   runeInput.onkeyup = function(event){
     var textValue = this.value 
-    // if(event.key.length === 1){
-    //   textValue += event.key;
-    // }
-    runeContainer.innerHTML = transliterate(textValue);
+    var text = transliterate(textValue);
+    if(text.length > 0 ){
+      diamonds.classList.remove(["hidden"]);
+    } else {
+      diamonds.classList.add(["hidden"]);
+    }
+    runeContainer.innerHTML = text;
+
   };
 
   function transliterate(textValue) {
