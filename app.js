@@ -20,7 +20,7 @@
 
   // sort map by key length in order to auto combine 
   var keys = Object.keys(runeObj);
-  var validChars = keys.join();
+  var validChars = [" ", ...keys.join()];
   var sortedKeys = keys.sort(function(first, second){
     return first.length < second.length;
   });
