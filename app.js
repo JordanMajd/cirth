@@ -20,7 +20,7 @@
 
   // sort map by key length in order to auto combine 
   var keys = Object.keys(runeObj);
-  var validChars = [" ", ...keys.join()];
+  var validChars = ["0", ...keys.join()];
   var sortedKeys = keys.sort(function(first, second){
     return first.length < second.length;
   });
@@ -63,12 +63,12 @@
     var invalidChars = [];
     // replace spaces
     textValue = textValue.replaceAll(" ", 0 + ",");
-    console.log(textValue)
+
+    // filter out invalid characters
     textValue.split("").forEach(function(char) {
         if (!validChars.includes(char)) {
-          console.log(char);
           invalidChars.push(char);
-          textValue.replaceAll(char, "");
+          textValue = textValue.replaceAll(char, "");
         }
     });
 
@@ -84,7 +84,7 @@
       } else if (val.length === 0) {
         // do nothing
       } else {
-        runeTags += `<img class="rune" src="/runes/Certh_" + val + ".svg"/>`;
+        runeTags += `<img class="rune" src="/runes/Certh_${val}.svg"/>`;
       }
     });
 
